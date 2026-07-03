@@ -52,12 +52,10 @@ footer{background:#222;color:white;text-align:center;padding:25px;line-height:2;
 
 <div class="form-box">
 <h2>معلومات الطلب</h2>
-<input id="customerName" placeholder="اسم الزبون">
-<input id="customerAddress" placeholder="العنوان">
-  <button type="button" onclick="getLocation()" style="width:100%;padding:14px;margin-top:10px;background:#0d6efd;color:#fff;border:none;border-radius:12px;font-size:17px;">
+<button id="locationBtn" type="button" onclick="getLocation()" style="width:100%;padding:14px;margin-top:10px;background:#0d6efd;color:#fff;border:none;border-radius:12px;font-size:17px;font-weight:bold;">
 📍 إرسال موقعي
 </button>
-  <textarea id="notes" placeholder="ملاحظات الطلب مثل: بدون بصل، زيادة خبز..." rows="3"></textarea>
+<textarea id="notes" placeholder="ملاحظات الطلب مثل: بدون بصل، زيادة خبز..." rows="3"></textarea>
 </div>
 
 </div>
@@ -78,6 +76,7 @@ footer{background:#222;color:white;text-align:center;padding:25px;line-height:2;
 
 <script>
 const phone = "9647845223345";
+let customerLocation = "";
 
 const items = [
   {
@@ -140,8 +139,30 @@ function updateTotal(){
   document.getElementById("total").innerText = total.toLocaleString();
 }
 
+function getLocation(){
+  if(!navigator.geolocation){
+    alert("المتصفح لا يدعم تحديد الموقع");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      customerLocation = `https://maps.google.com/?q=${lat},${lng}`;
+      const locationBtn = document.getElementById("locationBtn");
+      locationBtn.innerText = "✅ تم تحديد الموقع";
+      locationBtn.style.background = "#198754";
+    },
+    () => {
+      alert("تعذر تحديد الموقع، يرجى المحاولة مرة أخرى");
+    }
+  );
+}
+
 function sendOrder(){
-  let orderText = "طلب جديد من المنيو الإلكتروني:%0A%0A";
+  let orderText = "مطعم كباب السلطان%0A%0A";
+  orderText += "الأصناف المختارة:%0A";
   let total = 0;
   let hasItems = false;
 
@@ -150,7 +171,7 @@ function sendOrder(){
       hasItems = true;
       let subtotal = item.price * cart[index];
       total += subtotal;
-      orderText += `- ${item.name} × ${cart[index]} = ${subtotal.toLocaleString()} د.ع%0A`;
+      orderText += `- ${item.name}: الكمية ${cart[index]} | سعر الصنف ${item.price.toLocaleString()} د.ع | الإجمالي ${subtotal.toLocaleString()} د.ع%0A`;
     }
   });
 
@@ -159,15 +180,18 @@ function sendOrder(){
     return;
   }
 
-  const name = document.getElementById("customerName").value;
-  const address = document.getElementById("customerAddress").value;
+  if(!customerLocation){
+    alert("يرجى إرسال موقعك أولاً");
+    return;
+  }
+
   const notes = document.getElementById("notes").value;
 
-  orderText += `%0Aالمجموع: ${total.toLocaleString()} د.ع%0A`;
-  orderText += `%0Aاسم الزبون: ${name || "غير مذكور"}`;
-  orderText += `%0Aالعنوان: ${address || "غير مذكور"}`;
-  orderText += `%0Aالملاحظات: ${notes || "لا توجد"}`;
-  orderText += `%0A📍 الموقع: ${customerLocation || "لم يتم إرسال الموقع"}`;
+  orderText += `%0Aالمجموع الكلي: ${total.toLocaleString()} د.ع`;
+  if(notes.trim()){
+    orderText += `%0Aالملاحظات: ${notes.trim()}`;
+  }
+  orderText += `%0Aرابط الموقع على Google Maps: ${customerLocation}`;
   orderText += `%0A%0Aالتوصيل متوفر لكافة مناطق النجف والكوفة`;
 
   window.location.href = `https://wa.me/${phone}?text=${orderText}`;

@@ -3,104 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>كباب السلطان | المنيو الإلكتروني</title>
+<title>مطعم كباب السلطان | المنيو الإلكتروني</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Tahoma,sans-serif;
-}
-
-body{
-background:#f7f7f7;
-color:#222;
-}
-
-header{
-background:#8B0000;
-color:#fff;
-padding:30px 20px;
-text-align:center;
-}
-
-header h1{
-font-size:34px;
-margin-bottom:10px;
-}
-
-header p{
-font-size:18px;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-padding:20px;
-}
-
-.category{
-margin-top:30px;
-margin-bottom:15px;
-font-size:28px;
-color:#8B0000;
-border-right:6px solid #8B0000;
-padding-right:10px;
-}
-
-.card{
-background:white;
-border-radius:15px;
-overflow:hidden;
-margin-bottom:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-.card img{
-width:100%;
-height:260px;
-object-fit:cover;
-}
-
-.info{
-padding:20px;
-}
-
-.info h2{
-margin-bottom:10px;
-}
-
-.price{
-font-size:24px;
-font-weight:bold;
-color:#c62828;
-margin-top:10px;
-}
-
-button{
-width:100%;
-margin-top:15px;
-padding:15px;
-background:#25D366;
-color:white;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
-}
-
-footer{
-margin-top:40px;
-background:#222;
-color:white;
-padding:25px;
-text-align:center;
-line-height:2;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Tahoma,Arial,sans-serif}
+body{background:#f5f1ea;color:#222;padding-bottom:90px}
+header{background:linear-gradient(135deg,#7a0000,#b00000);color:white;text-align:center;padding:30px 15px}
+header h1{font-size:34px;margin-bottom:10px}
+header p{font-size:17px}
+.container{max-width:950px;margin:auto;padding:18px}
+.notice{background:#fff3cd;border-radius:14px;padding:15px;margin:18px 0;font-size:17px;text-align:center}
+.category{font-size:26px;color:#8b0000;margin:25px 0 15px;border-right:6px solid #8b0000;padding-right:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.card img{width:100%;height:180px;object-fit:cover}
+.info{padding:16px}
+.info h2{font-size:21px;margin-bottom:8px}
+.price{color:#b00000;font-size:22px;font-weight:bold;margin-bottom:12px}
+.controls{display:flex;align-items:center;gap:10px}
+.controls button{width:42px;height:42px;border:none;border-radius:50%;background:#8b0000;color:white;font-size:24px}
+.qty{font-size:22px;font-weight:bold;min-width:30px;text-align:center}
+.cart{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;padding:12px 15px;box-shadow:0 -5px 18px rgba(0,0,0,.15)}
+.cart-inner{max-width:950px;margin:auto;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.total{font-size:20px;font-weight:bold;color:#8b0000}
+.order-btn{background:#25D366;color:white;border:none;border-radius:12px;padding:14px 18px;font-size:17px;font-weight:bold}
+.form-box{background:white;border-radius:18px;padding:18px;margin-top:25px;box-shadow:0 8px 22px rgba(0,0,0,.1)}
+input,textarea{width:100%;padding:14px;margin-top:10px;border:1px solid #ddd;border-radius:12px;font-size:16px}
+footer{background:#222;color:white;text-align:center;padding:25px;line-height:2;margin-top:35px}
 </style>
-
 </head>
 
 <body>
@@ -112,41 +42,136 @@ line-height:2;
 
 <div class="container">
 
-<div class="category">
-🔥 الكباب
+<div class="notice">
+🚚 التوصيل متوفر لكافة مناطق النجف والكوفة
 </div>
 
-<div class="card">
+<h2 class="category">🔥 قائمة الكباب</h2>
 
-<img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200" alt="كباب">
+<div class="grid" id="menu"></div>
 
-<div class="info">
-
-<h2>كيلو كباب لحم</h2>
-
-<div class="price">
-16000 د.ع
-</div>
-
-<button onclick="window.location.href='https://wa.me/9647845223345'">
-اطلب الآن
-</button>
-
-</div>
-
+<div class="form-box">
+<h2>معلومات الطلب</h2>
+<input id="customerName" placeholder="اسم الزبون">
+<input id="customerAddress" placeholder="العنوان">
+<textarea id="notes" placeholder="ملاحظات الطلب مثل: بدون بصل، زيادة خبز..." rows="3"></textarea>
 </div>
 
 </div>
 
 <footer>
-
-📍 الكوفة - قرب مجمع المختار السكني
-
-<br>
-
-📞 07845223345
-
+<h2>مطعم كباب السلطان</h2>
+<p>📍 الكوفة - قرب مجمع المختار السكني</p>
+<p>📞 07845223345</p>
+<p>🚚 التوصيل متوفر لكافة مناطق النجف والكوفة</p>
 </footer>
+
+<div class="cart">
+<div class="cart-inner">
+<div class="total">المجموع: <span id="total">0</span> د.ع</div>
+<button class="order-btn" onclick="sendOrder()">إرسال الطلب واتساب</button>
+</div>
+</div>
+
+<script>
+const phone = "9647845223345";
+
+const items = [
+  {
+    name: "كيلو كباب لحم",
+    price: 16000,
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200"
+  },
+  {
+    name: "كيلو كباب دجاج",
+    price: 14000,
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200"
+  },
+  {
+    name: "نصف كيلو كباب لحم",
+    price: 8000,
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200"
+  },
+  {
+    name: "نصف كيلو كباب دجاج",
+    price: 7000,
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200"
+  }
+];
+
+let cart = {};
+
+function renderMenu(){
+  const menu = document.getElementById("menu");
+  menu.innerHTML = "";
+  items.forEach((item, index)=>{
+    cart[index] = cart[index] || 0;
+    menu.innerHTML += `
+      <div class="card">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="info">
+          <h2>${item.name}</h2>
+          <div class="price">${item.price.toLocaleString()} د.ع</div>
+          <div class="controls">
+            <button onclick="changeQty(${index},1)">+</button>
+            <div class="qty" id="qty-${index}">${cart[index]}</div>
+            <button onclick="changeQty(${index},-1)">−</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function changeQty(index, amount){
+  cart[index] = Math.max(0, cart[index] + amount);
+  document.getElementById("qty-" + index).innerText = cart[index];
+  updateTotal();
+}
+
+function updateTotal(){
+  let total = 0;
+  items.forEach((item,index)=>{
+    total += item.price * cart[index];
+  });
+  document.getElementById("total").innerText = total.toLocaleString();
+}
+
+function sendOrder(){
+  let orderText = "طلب جديد من المنيو الإلكتروني:%0A%0A";
+  let total = 0;
+  let hasItems = false;
+
+  items.forEach((item,index)=>{
+    if(cart[index] > 0){
+      hasItems = true;
+      let subtotal = item.price * cart[index];
+      total += subtotal;
+      orderText += `- ${item.name} × ${cart[index]} = ${subtotal.toLocaleString()} د.ع%0A`;
+    }
+  });
+
+  if(!hasItems){
+    alert("اختر صنف واحد على الأقل");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value;
+  const address = document.getElementById("customerAddress").value;
+  const notes = document.getElementById("notes").value;
+
+  orderText += `%0Aالمجموع: ${total.toLocaleString()} د.ع%0A`;
+  orderText += `%0Aاسم الزبون: ${name || "غير مذكور"}`;
+  orderText += `%0Aالعنوان: ${address || "غير مذكور"}`;
+  orderText += `%0Aالملاحظات: ${notes || "لا توجد"}`;
+  orderText += `%0A%0Aالتوصيل متوفر لكافة مناطق النجف والكوفة`;
+
+  window.location.href = `https://wa.me/${phone}?text=${orderText}`;
+}
+
+renderMenu();
+updateTotal();
+</script>
 
 </body>
 </html>

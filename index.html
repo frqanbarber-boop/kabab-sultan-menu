@@ -54,7 +54,10 @@ footer{background:#222;color:white;text-align:center;padding:25px;line-height:2;
 <h2>معلومات الطلب</h2>
 <input id="customerName" placeholder="اسم الزبون">
 <input id="customerAddress" placeholder="العنوان">
-<textarea id="notes" placeholder="ملاحظات الطلب مثل: بدون بصل، زيادة خبز..." rows="3"></textarea>
+  <button type="button" onclick="getLocation()" style="width:100%;padding:14px;margin-top:10px;background:#0d6efd;color:#fff;border:none;border-radius:12px;font-size:17px;">
+📍 إرسال موقعي
+</button>
+  <textarea id="notes" placeholder="ملاحظات الطلب مثل: بدون بصل، زيادة خبز..." rows="3"></textarea>
 </div>
 
 </div>
@@ -164,6 +167,7 @@ function sendOrder(){
   orderText += `%0Aاسم الزبون: ${name || "غير مذكور"}`;
   orderText += `%0Aالعنوان: ${address || "غير مذكور"}`;
   orderText += `%0Aالملاحظات: ${notes || "لا توجد"}`;
+  orderText += `%0A📍 الموقع: ${customerLocation || "لم يتم إرسال الموقع"}`;
   orderText += `%0A%0Aالتوصيل متوفر لكافة مناطق النجف والكوفة`;
 
   window.location.href = `https://wa.me/${phone}?text=${orderText}`;

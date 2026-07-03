@@ -58,22 +58,6 @@ header p{font-size:16px;color:rgba(255,255,255,.88)}
   box-shadow:var(--shadow);
   border:1px solid rgba(255,255,255,.6);
 }
-.hero-caption{
-  text-align:center;
-  padding:16px 10px 4px;
-}
-.hero-caption h2{
-  font-size:clamp(24px,4.6vw,34px);
-  color:var(--red);
-  line-height:1.25;
-}
-.hero-caption p{
-  margin-top:8px;
-  font-size:15px;
-  line-height:1.9;
-  color:var(--muted);
-}
-.hero-caption strong{color:var(--text)}
 .notice{
   background:linear-gradient(180deg,#fff9e7 0%,#fff5d6 100%);
   border:1px solid rgba(214,181,108,.35);
@@ -250,8 +234,6 @@ footer p{color:rgba(255,255,255,.9)}
   .container{padding:14px 12px 16px}
   .brand-logo{width:min(138px,42vw)}
   .hero-image{border-radius:22px}
-  .hero-caption{padding:14px 6px 2px}
-  .hero-caption p{font-size:14px;line-height:1.8}
   .grid{grid-template-columns:1fr;gap:14px}
   .card{border-radius:22px}
   .info{padding:15px}
@@ -272,16 +254,11 @@ footer p{color:rgba(255,255,255,.9)}
 <div class="container">
 
 <div class="brand-logo-wrap">
-<img class="brand-logo" src="images/logo.png" alt="شعار مطعم كباب السلطان" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"420\" height=\"180\" viewBox=\"0 0 420 180\"><rect width=\"100%25\" height=\"100%25\" rx=\"24\" fill=\"%23f1ece3\"/><text x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Tahoma,Arial,sans-serif\" font-size=\"28\" fill=\"%238b0000\">شعار المطعم</text></svg>';">
+<img class="brand-logo" src="images/logo.png" alt="">
 </div>
 
 <div class="hero-wrap">
-<img class="hero-image" src="images/hero.jpg" alt="واجهة مطعم كباب السلطان" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"520\" viewBox=\"0 0 1200 520\"><rect width=\"100%25\" height=\"100%25\" rx=\"24\" fill=\"%23efe7db\"/><text x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Tahoma,Arial,sans-serif\" font-size=\"52\" fill=\"%238b0000\">صورة الغلاف</text></svg>';">
-</div>
-
-<div class="hero-caption">
-<h2>مطعم كباب السلطان</h2>
-<p>🔥 جميع طلبات الكباب تقدم مع<br>✔ بصل<br>✔ طماطم مشوية</p>
+<img class="hero-image" src="images/hero.jpg" alt="">
 </div>
 
 <div class="notice">
@@ -352,7 +329,7 @@ function renderMenu(){
     cart[index] = cart[index] || 0;
     menu.innerHTML += `
       <div class="card">
-        <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"500\" viewBox=\"0 0 800 500\"><rect width=\"100%25\" height=\"100%25\" rx=\"20\" fill=\"%23f1ece3\"/><text x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Tahoma,Arial,sans-serif\" font-size=\"38\" fill=\"%238b0000\">صورة غير متوفرة</text></svg>';">
+        <img src="${item.image}" alt="" loading="lazy">
         <div class="info">
           <h2>${item.name}</h2>
           <div class="price">${item.price.toLocaleString()} د.ع</div>

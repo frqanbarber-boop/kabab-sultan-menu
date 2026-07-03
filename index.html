@@ -51,10 +51,10 @@ header p{font-size:16px;color:rgba(255,255,255,.88)}
 .hero-wrap{margin-bottom:16px}
 .hero-image{
   width:100%;
-  height:clamp(170px,30vw,260px);
+  height:clamp(150px,26vw,220px);
   border-radius:24px;
   object-fit:cover;
-  object-position:center top;
+  object-position:center center;
   display:block;
   box-shadow:var(--shadow);
   border:1px solid rgba(255,255,255,.6);
@@ -223,7 +223,7 @@ footer{
   text-align:center;
   padding:24px 18px;
   line-height:2;
-  margin-top:34px;
+  margin-top:12px;
 }
 footer h2{font-size:22px;margin-bottom:4px}
 footer p{color:rgba(255,255,255,.9)}
@@ -249,7 +249,7 @@ footer p{color:rgba(255,255,255,.9)}
 
 <header>
 <h1>مطعم كباب السلطان</h1>
-<p>كباب مشوي على الفحم • توصيل النجف والكوفة</p>
+<p>كباب بالوزن</p>
 </header>
 
 <div class="container">
@@ -263,7 +263,7 @@ footer p{color:rgba(255,255,255,.9)}
 </div>
 
 <div class="notice">
-🚚 التوصيل متوفر لكافة مناطق النجف والكوفة
+( كباب بالوزن ) مستعدون لتجهيز كافة المناسبات
 </div>
 
 <h2 class="category">🔥 قائمة الكباب</h2>
@@ -284,7 +284,7 @@ footer p{color:rgba(255,255,255,.9)}
 <h2>مطعم كباب السلطان</h2>
 <p>📍 الكوفة - قرب مجمع المختار السكني</p>
 <p>📞 07845223345</p>
-<p>🚚 التوصيل متوفر لكافة مناطق النجف والكوفة</p>
+<p>( كباب بالوزن ) مستعدون لتجهيز كافة المناسبات</p>
 </footer>
 
 <div class="cart">
@@ -412,7 +412,7 @@ function sendOrder(){
     orderText += `%0Aالملاحظات: ${notes.trim()}`;
   }
   orderText += `%0Aرابط الموقع على Google Maps: ${customerLocation}`;
-  orderText += `%0A%0Aالتوصيل متوفر لكافة مناطق النجف والكوفة`;
+  orderText += `%0A%0A( كباب بالوزن ) مستعدون لتجهيز كافة المناسبات`;
 
   window.location.href = `https://wa.me/${phone}?text=${orderText}`;
 }

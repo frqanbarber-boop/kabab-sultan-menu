@@ -12,6 +12,10 @@ header{background:linear-gradient(135deg,#7a0000,#b00000);color:white;text-align
 header h1{font-size:34px;margin-bottom:10px}
 header p{font-size:17px}
 .container{max-width:950px;margin:auto;padding:18px}
+.brand-logo-wrap{text-align:center;margin-bottom:14px}
+.brand-logo{width:100%;max-width:180px;height:auto;display:block;margin:auto;border-radius:14px;object-fit:contain}
+.hero-wrap{margin-bottom:18px}
+.hero-image{width:100%;height:260px;border-radius:18px;object-fit:cover;display:block}
 .notice{background:#fff3cd;border-radius:14px;padding:15px;margin:18px 0;font-size:17px;text-align:center}
 .category{font-size:26px;color:#8b0000;margin:25px 0 15px;border-right:6px solid #8b0000;padding-right:10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
@@ -30,6 +34,10 @@ header p{font-size:17px}
 .form-box{background:white;border-radius:18px;padding:18px;margin-top:25px;box-shadow:0 8px 22px rgba(0,0,0,.1)}
 input,textarea{width:100%;padding:14px;margin-top:10px;border:1px solid #ddd;border-radius:12px;font-size:16px}
 footer{background:#222;color:white;text-align:center;padding:25px;line-height:2;margin-top:35px}
+@media (max-width:640px){
+  .brand-logo{max-width:140px}
+  .hero-image{height:190px}
+}
 </style>
 </head>
 
@@ -41,6 +49,14 @@ footer{background:#222;color:white;text-align:center;padding:25px;line-height:2;
 </header>
 
 <div class="container">
+
+<div class="brand-logo-wrap">
+<img class="brand-logo" src="images/logo.png" alt="شعار مطعم كباب السلطان" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"420\" height=\"180\" viewBox=\"0 0 420 180\"><rect width=\"100%25\" height=\"100%25\" rx=\"24\" fill=\"%23f1ece3\"/><text x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Tahoma,Arial,sans-serif\" font-size=\"28\" fill=\"%238b0000\">شعار المطعم</text></svg>';">
+</div>
+
+<div class="hero-wrap">
+<img class="hero-image" src="images/hero.jpg" alt="واجهة مطعم كباب السلطان" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"520\" viewBox=\"0 0 1200 520\"><rect width=\"100%25\" height=\"100%25\" rx=\"24\" fill=\"%23efe7db\"/><text x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Tahoma,Arial,sans-serif\" font-size=\"52\" fill=\"%238b0000\">صورة الغلاف</text></svg>';">
+</div>
 
 <div class="notice">
 🚚 التوصيل متوفر لكافة مناطق النجف والكوفة
@@ -82,22 +98,22 @@ const items = [
   {
     name: "كيلو كباب لحم",
     price: 16000,
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200"
+    image: "images/beef.jpg"
   },
   {
     name: "كيلو كباب دجاج",
     price: 14000,
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200"
+    image: "images/chicken.jpg"
   },
   {
     name: "نصف كيلو كباب لحم",
     price: 8000,
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200"
+    image: "images/beef.jpg"
   },
   {
     name: "نصف كيلو كباب دجاج",
     price: 7000,
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200"
+    image: "images/chicken.jpg"
   }
 ];
 
@@ -110,7 +126,7 @@ function renderMenu(){
     cart[index] = cart[index] || 0;
     menu.innerHTML += `
       <div class="card">
-        <img src="${item.image}" alt="${item.name}">
+        <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"500\" viewBox=\"0 0 800 500\"><rect width=\"100%25\" height=\"100%25\" rx=\"20\" fill=\"%23f1ece3\"/><text x=\"50%25\" y=\"50%25\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Tahoma,Arial,sans-serif\" font-size=\"38\" fill=\"%238b0000\">صورة غير متوفرة</text></svg>';">
         <div class="info">
           <h2>${item.name}</h2>
           <div class="price">${item.price.toLocaleString()} د.ع</div>
